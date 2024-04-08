@@ -156,6 +156,7 @@ const HomeContextProvider = ({children}: ProviderProps) => {
                 muted,
                 toggleMute,
                 unMute,
+                  volume,
             }
         }>
          {children}
