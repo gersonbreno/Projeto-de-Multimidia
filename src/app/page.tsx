@@ -5,7 +5,8 @@ import { HomeContext } from "./context/HomeContext";
 import { FaPause, FaPlay,} from "react-icons/fa";
 import videos, { Video } from './data/video';
 import { CiVolumeHigh, CiVolumeMute } from "react-icons/ci";7
-import { MdDescription } from "react-icons/md";
+import { FaVolumeUp } from 'react-icons/fa';
+
 
 
 export default function Home() {
@@ -49,21 +50,23 @@ export default function Home() {
        
 
         <div className="bg-black">
-          <input
-            type="range"
-            min={0}
-            max={totalTime}
-            value={currentTime}
-            onChange={(e) => configCurrentTime(Number(e.target.value))}
-          >
-          </input>
-          <span className="text-white mx-2">{formatTime(currentTime)}</span> {/* Exibe o tempo atual formatado */}
-          <button className="text-white" onClick={playPause}>
-            {playing ? <FaPause /> : <FaPlay />}
-          </button>
-
- 
-        </div>
+        <input
+  type="range"
+  min={0}
+  max={totalTime}
+  value={currentTime}
+  onChange={(e) => configCurrentTime(Number(e.target.value))}
+  style={{
+    width: "100%",
+    backgroundColor: "red", // Altere a cor de fundo da barra de rolagem aqui
+    outline: "none",
+  }}
+/>
+  <span className="text-white mx-2">{formatTime(currentTime)}</span>
+  <button className="text-white" onClick={playPause}>
+    {playing ? <FaPause /> : <FaPlay />}
+  </button>
+</div>
 
         <div>
         <button onClick={toggleMute}>

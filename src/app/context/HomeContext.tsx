@@ -82,21 +82,22 @@ const HomeContextProvider = ({children}: ProviderProps) => {
                 video.removeEventListener("timeupdate", updateProgressBar);
             };
         }
-    }, [videoURL]);
+    }, [videoURL, playing]);
     
 
     const configCurrentTime = (time: number) => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.currentTime = time;
-    setCurrentTime(time);
-
-    // Se o vídeo estiver em pausa, inicia a reprodução para sincronizar o tempo do vídeo com o valor do input range
-    if (!playing) {
-        video.play();
+        const video = videoRef.current;
+        if (!video) return;
+    
+        // Define o tempo atual do vídeo para o valor selecionado
+        video.currentTime = time;
+        setCurrentTime(time);
+    
+        // Se o vídeo estiver em reprodução, continue a reprodução
+        if (playing) {
+            video.play();
+        }
     }
-}
 
     const playPause = ()  => {
         const video = videoRef.current;
